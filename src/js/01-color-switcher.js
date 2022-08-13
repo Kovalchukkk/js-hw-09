@@ -13,6 +13,11 @@ refs.startBtn.addEventListener('click', () => {
   refs.startBtn.setAttribute('disabled', true);
 });
 
+refs.stopBtn.addEventListener('click', () => {
+  clearInterval(timerId);
+  refs.startBtn.removeAttribute('disabled');
+});
+
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
