@@ -34,6 +34,24 @@ const options = {
 
 flatpickr('#datetime-picker', options);
 
+function setInterface() {
+  const curentTime = Date.now();
+  const timeDelta = selectedTime - curentTime;
+
+  const { days, hours, minutes, seconds } = convertMs(timeDelta);
+
+  if (timeDelta >= 0) {
+    refs.days.textContent = addLeadingZero(days);
+    refs.hours.textContent = addLeadingZero(hours);
+    refs.minutes.textContent = addLeadingZero(minutes);
+    refs.seconds.textContent = addLeadingZero(seconds);
+  }
+}
+
+function addLeadingZero(value) {
+  return value.toString().padStart(2, '0');
+}
+
 function convertMs(ms) {
   // Number of milliseconds per unit of time
   const second = 1000;
