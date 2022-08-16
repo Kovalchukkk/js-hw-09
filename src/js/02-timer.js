@@ -34,6 +34,13 @@ const options = {
 
 flatpickr('#datetime-picker', options);
 
+refs.start.addEventListener('click', onStartClick);
+
+function onStartClick(e) {
+  const timerId = setInterval(setInterface, 1000);
+  e.currentTarget.setAttribute('disabled', true);
+}
+
 function setInterface() {
   const curentTime = Date.now();
   const timeDelta = selectedTime - curentTime;
