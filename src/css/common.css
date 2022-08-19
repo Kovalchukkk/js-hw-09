@@ -16,3 +16,17 @@ img {
   display: block;
   max-width: 100%;
 }
+
+.container {
+  padding: 10px;
+}
+
+.container.input {
+  text-align: center;
+}
+
+.timer {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
