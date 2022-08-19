@@ -16,6 +16,21 @@ function onFormSubmit(e) {
     formData[name] = value;
   });
   console.log(formData);
+
+  let delay = Number(formData.delay);
+  const amount = Number(formData.amount);
+  const step = Number(formData.step);
+
+  for (let i = 1; i <= amount; i += 1) {
+    createPromise(i, delay)
+      .then(({ position, delay }) => {
+        Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
+      })
+      .catch(({ position, delay }) => {
+        Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
+      });
+    delay += step;
+  }
 }
 
 function createPromise(position, delay) {
